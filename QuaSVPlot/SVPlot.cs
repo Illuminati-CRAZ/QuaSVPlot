@@ -1,5 +1,6 @@
 using Microsoft.Win32;
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 using Quaver.API;
 using Quaver.API.Maps;
@@ -12,10 +13,13 @@ namespace QuaSVPlot
     {
         public PlotModel Model { get; private set; }
         
+        public StairStepSeries SVSeries { get; private set; }
+        
         public Qua Map { get; private set; }
         
         public SVPlot()
         {
+            // Select .qua file
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.DefaultExt = ".qua";
             dialog.Filter = "Quaver map files (.qua)|*.qua";
@@ -26,13 +30,26 @@ namespace QuaSVPlot
             if (result == true)
                 Map = Qua.Parse(dialog.FileName, false);
             
-            Model = new PlotModel { Title = "yes" };
-            var SVSeries = new LineSeries();
+            // Plot stuff
+            Model = new PlotModel { Title = Map.ToString() };
+            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom });
+            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = -10, Maximum = 10});
+            
+            SVSeries = new StairStepSeries();
+            SVSeries.Title = "Scroll Velocities";
             SVSeries.ItemsSource = Map.SliderVelocities;
             SVSeries.Mapping = item => new DataPoint(((SliderVelocityInfo)item).StartTime, ((SliderVelocityInfo)item).Multiplier);
+            SVSeries.VerticalStrokeThickness = .25;
             SVSeries.CanTrackerInterpolatePoints = false;
             SVSeries.DataFieldX = "Time";
             SVSeries.DataFieldY = "Multiplier"; 
+            
+            // Generate Data Points
+            /*foreach (SliderVelocityInfo sv in Map.SliderVelocities)
+            {
+                SVSeries.Points.Add(new DataPoint(sv.StartTime, sv.Multiplier));
+            }*/
+            
             Model.Series.Add(SVSeries);
         }
     }
