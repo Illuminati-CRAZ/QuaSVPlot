@@ -15,6 +15,8 @@ namespace QuaSVPlot
         
         public StairStepSeries SVSeries { get; private set; }
         
+        public LineSeries PositionSeries { get; private set; }
+        
         public Qua Map { get; private set; }
         
         public SVPlot()
@@ -29,12 +31,16 @@ namespace QuaSVPlot
             
             if (result == true)
                 Map = Qua.Parse(dialog.FileName, false);
+                
+            Map.NormalizeSVs();
             
             // Plot stuff
             Model = new PlotModel { Title = Map.ToString() };
-            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom });
-            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = -10, Maximum = 10});
+            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Key = "Time" });
+            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Key = "Velocity", Minimum = -10, Maximum = 10});
+            Model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Key = "Position" });
             
+            // Scroll Velocities
             SVSeries = new StairStepSeries();
             SVSeries.Title = "Scroll Velocities";
             SVSeries.ItemsSource = Map.SliderVelocities;
@@ -42,15 +48,30 @@ namespace QuaSVPlot
             SVSeries.VerticalStrokeThickness = .25;
             SVSeries.CanTrackerInterpolatePoints = false;
             SVSeries.DataFieldX = "Time";
-            SVSeries.DataFieldY = "Multiplier"; 
+            SVSeries.DataFieldY = "Multiplier";
+            SVSeries.YAxisKey = "Velocity";
             
-            // Generate Data Points
-            /*foreach (SliderVelocityInfo sv in Map.SliderVelocities)
+            // Position
+            PositionSeries = new LineSeries();
+            PositionSeries.Title = "Position";
+            PositionSeries.CanTrackerInterpolatePoints = true;
+            PositionSeries.DataFieldX = "Time";
+            PositionSeries.DataFieldY = "Position";
+            PositionSeries.YAxisKey = "Position";
+            
+            // Calculate position data points based off of Quaver's position calculations
+            // This is pretty much just HitObjectManagerKeys.InitializePositionMarkers()
+            long position = (long)(Map.SliderVelocities[0].StartTime * Map.InitialScrollVelocity * 100);
+            PositionSeries.Points.Add(new DataPoint(Map.SliderVelocities[0].StartTime, position));
+            for (int i = 1; i < Map.SliderVelocities.Count; i++)
             {
-                SVSeries.Points.Add(new DataPoint(sv.StartTime, sv.Multiplier));
-            }*/
+                position += (long)((Map.SliderVelocities[i].StartTime - Map.SliderVelocities[i - 1].StartTime)
+                                    * Map.SliderVelocities[i - 1].Multiplier * 100);
+                PositionSeries.Points.Add(new DataPoint(Map.SliderVelocities[i].StartTime, position));
+            }
             
             Model.Series.Add(SVSeries);
+            Model.Series.Add(PositionSeries);
         }
     }
 }
