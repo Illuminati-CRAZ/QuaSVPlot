@@ -1,13 +1,38 @@
 {
   "version": 2,
-  "dgSpecHash": "M6GtjvgUHZsaaDarHSWs0li7ZXzKN5pNnGUhXZT3BqWNZY4lnaw6/ZfcoIuPOMF72etLJqz6ctmb/mWmlh5ZRg==",
+  "dgSpecHash": "B+TEQp2ZoSbiMQsrThnQzRZ5+w8Y+Snq26VA7ZI4kWRsZBqElwMS81DUMSXGDO6pXHNHtobm7S6U07S5IRtdAQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Taboo\\github\\QuaSVPlot\\QuaSVPlot\\QuaSVPlot.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Taboo\\.nuget\\packages\\holly.osu.databasereader\\2.1.0\\holly.osu.databasereader.2.1.0.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\monogame.extended\\1.1.0\\monogame.extended.1.1.0.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\moonsharp\\2.0.0\\moonsharp.2.0.0.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\osu.shared\\1.0.2\\osu.shared.1.0.2.nupkg.sha512",
     "C:\\Users\\Taboo\\.nuget\\packages\\oxyplot.core\\2014.1.546\\oxyplot.core.2014.1.546.nupkg.sha512",
-    "C:\\Users\\Taboo\\.nuget\\packages\\oxyplot.wpf\\2014.1.546\\oxyplot.wpf.2014.1.546.nupkg.sha512"
+    "C:\\Users\\Taboo\\.nuget\\packages\\oxyplot.wpf\\2014.1.546\\oxyplot.wpf.2014.1.546.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sixlabors.imagesharp\\1.0.3\\sixlabors.imagesharp.1.0.3.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlite-net-pcl\\1.5.231\\sqlite-net-pcl.1.5.231.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlitepclraw.bundle_green\\1.1.11\\sqlitepclraw.bundle_green.1.1.11.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlitepclraw.core\\1.1.11\\sqlitepclraw.core.1.1.11.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.linux\\1.1.11\\sqlitepclraw.lib.e_sqlite3.linux.1.1.11.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.osx\\1.1.11\\sqlitepclraw.lib.e_sqlite3.osx.1.1.11.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.v110_xp\\1.1.11\\sqlitepclraw.lib.e_sqlite3.v110_xp.1.1.11.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3.netstandard11\\1.1.11\\sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.11.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\yamldotnet\\5.1.0\\yamldotnet.5.1.0.nupkg.sha512",
+    "C:\\Users\\Taboo\\.nuget\\packages\\z440.atl.core\\3.18.0\\z440.atl.core.3.18.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MonoGame.Extended 1.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "MonoGame.Extended",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

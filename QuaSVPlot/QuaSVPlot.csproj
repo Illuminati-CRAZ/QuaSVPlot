@@ -10,4 +10,8 @@
     <PackageReference Include="OxyPlot.Wpf" Version="2014.1.546" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Quaver.API\Quaver.API\Quaver.API.csproj" />
+  </ItemGroup>
+
 </Project>
