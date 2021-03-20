@@ -1,0 +1,163 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "OxyPlot.Core/2014.1.546": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net4+sl4+wp71+win8/OxyPlot.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl4+wp71+win8/OxyPlot.dll": {}
+        }
+      },
+      "OxyPlot.Wpf/2014.1.546": {
+        "type": "package",
+        "dependencies": {
+          "OxyPlot.Core": "[2014.1.546]"
+        },
+        "compile": {
+          "lib/net45/OxyPlot.Wpf.dll": {},
+          "lib/net45/OxyPlot.Xps.dll": {}
+        },
+        "runtime": {
+          "lib/net45/OxyPlot.Wpf.dll": {},
+          "lib/net45/OxyPlot.Xps.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OxyPlot.Core/2014.1.546": {
+      "sha512": "Vv7C4yjW4V3fjH4tjR295noyZXHrAdpFN/WXZM8COAIwYjmoXbG3sX1DBAcQgT72yf4mKcVoo66bUz7uUp9sCw==",
+      "type": "package",
+      "path": "oxyplot.core/2014.1.546",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AUTHORS",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "lib/portable-net4+sl4+wp71+win8/OxyPlot.dll",
+        "lib/portable-net4+sl4+wp71+win8/OxyPlot.pdb",
+        "lib/portable-net4+sl4+wp71+win8/OxyPlot.xml",
+        "oxyplot.core.2014.1.546.nupkg.sha512",
+        "oxyplot.core.nuspec"
+      ]
+    },
+    "OxyPlot.Wpf/2014.1.546": {
+      "sha512": "JmsyoZ7SAVIgGlNfecmwKOWvYDFL+NPW1ETY0hGG6QsOCUAIz0l6Yrp0s+IGV/2FIWszdUukISRfabyY/PRllw==",
+      "type": "package",
+      "path": "oxyplot.wpf/2014.1.546",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net40/OxyPlot.Wpf.XML",
+        "lib/net40/OxyPlot.Wpf.dll",
+        "lib/net40/OxyPlot.Wpf.pdb",
+        "lib/net40/OxyPlot.Xps.XML",
+        "lib/net40/OxyPlot.Xps.dll",
+        "lib/net40/OxyPlot.Xps.pdb",
+        "lib/net45/OxyPlot.Wpf.XML",
+        "lib/net45/OxyPlot.Wpf.dll",
+        "lib/net45/OxyPlot.Wpf.pdb",
+        "lib/net45/OxyPlot.Xps.XML",
+        "lib/net45/OxyPlot.Xps.dll",
+        "lib/net45/OxyPlot.Xps.pdb",
+        "oxyplot.wpf.2014.1.546.nupkg.sha512",
+        "oxyplot.wpf.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "OxyPlot.Wpf >= *"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Taboo\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Taboo\\github\\QuaSVPlot\\QuaSVPlot\\QuaSVPlot.csproj",
+      "projectName": "QuaSVPlot",
+      "projectPath": "C:\\Users\\Taboo\\github\\QuaSVPlot\\QuaSVPlot\\QuaSVPlot.csproj",
+      "packagesPath": "C:\\Users\\Taboo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Taboo\\github\\QuaSVPlot\\QuaSVPlot\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Taboo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "dependencies": {
+          "OxyPlot.Wpf": {
+            "target": "Package",
+            "version": "[*, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'OxyPlot.Core 2014.1.546' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "OxyPlot.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'OxyPlot.Wpf 2014.1.546' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "OxyPlot.Wpf",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
