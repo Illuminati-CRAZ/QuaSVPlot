@@ -6,6 +6,7 @@ using Quaver.API;
 using Quaver.API.Maps;
 using Quaver.API.Maps.Structures;
 using System;
+using System.Linq;
 
 namespace QuaSVPlot
 {
@@ -35,6 +36,10 @@ namespace QuaSVPlot
                 Map = Qua.Parse(dialog.FileName, false);
                 
             Map.NormalizeSVs();
+            Map.SliderVelocities.Insert(0, new SliderVelocityInfo { StartTime = Math.Min(Map.SliderVelocities[0].StartTime, 0) - 3000, 
+                                                                    Multiplier = Map.InitialScrollVelocity});
+            Map.SliderVelocities.Add(new SliderVelocityInfo { StartTime = Math.Max(Map.SliderVelocities.Last().StartTime, Map.Length) + 3000, 
+                                                              Multiplier = Map.SliderVelocities.Last().Multiplier});
             
             // Plot stuff
             Model = new PlotModel { Title = Map.ToString() };
@@ -45,13 +50,16 @@ namespace QuaSVPlot
             // Scroll Velocities
             SVSeries = new StairStepSeries();
             SVSeries.Title = "Scroll Velocities";
-            SVSeries.ItemsSource = Map.SliderVelocities;
-            SVSeries.Mapping = item => new DataPoint(((SliderVelocityInfo)item).StartTime, ((SliderVelocityInfo)item).Multiplier);
             SVSeries.VerticalStrokeThickness = .25;
             SVSeries.CanTrackerInterpolatePoints = false;
             SVSeries.DataFieldX = "Time";
             SVSeries.DataFieldY = "Multiplier";
             SVSeries.YAxisKey = "Velocity";
+
+            foreach (SliderVelocityInfo sv in Map.SliderVelocities)
+            {
+                SVSeries.Points.Add(new DataPoint(sv.StartTime, sv.Multiplier));
+            }
             
             // Position
             PositionSeries = new LineSeries();
@@ -73,6 +81,8 @@ namespace QuaSVPlot
             // This is pretty much just HitObjectManagerKeys.InitializePositionMarkers()
             long position = (long)(Map.SliderVelocities[0].StartTime * Map.InitialScrollVelocity * 100);
             PositionSeries.Points.Add(new DataPoint(Map.SliderVelocities[0].StartTime, position));
+            DisplacementSeries.Points.Add(new DataPoint(Map.SliderVelocities[0].StartTime, position - Map.SliderVelocities[0].StartTime * 100));
+            
             for (int i = 1; i < Map.SliderVelocities.Count; i++)
             {
                 position += (long)((Map.SliderVelocities[i].StartTime - Map.SliderVelocities[i - 1].StartTime)
