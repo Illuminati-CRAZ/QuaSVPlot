@@ -17,9 +17,7 @@ namespace QuaSVPlot
         public StairStepSeries SVSeries { get; private set; }
         
         public LineSeries PositionSeries { get; private set; }
-        
-        public LineSeries DisplacementSeries { get; private set; }
-        
+                
         public Qua Map { get; private set; }
         
         public SVPlot()
@@ -69,33 +67,20 @@ namespace QuaSVPlot
             PositionSeries.DataFieldY = "Position";
             PositionSeries.YAxisKey = "Position";
             
-            // Displacement
-            DisplacementSeries = new LineSeries();
-            DisplacementSeries.Title = "Displacement";
-            DisplacementSeries.CanTrackerInterpolatePoints = true;
-            DisplacementSeries.DataFieldX = "Time";
-            DisplacementSeries.DataFieldY = "Displacement";
-            DisplacementSeries.YAxisKey = "Position";
-            
-            // Calculate position and displacement data points based off of Quaver's position calculations
+            // Calculate position data points based off of Quaver's position calculations
             // This is pretty much just HitObjectManagerKeys.InitializePositionMarkers()
             long position = (long)(Map.SliderVelocities[0].StartTime * Map.InitialScrollVelocity * 100);
             PositionSeries.Points.Add(new DataPoint(Map.SliderVelocities[0].StartTime, position));
-            DisplacementSeries.Points.Add(new DataPoint(Map.SliderVelocities[0].StartTime, position - Map.SliderVelocities[0].StartTime * 100));
             
             for (int i = 1; i < Map.SliderVelocities.Count; i++)
             {
                 position += (long)((Map.SliderVelocities[i].StartTime - Map.SliderVelocities[i - 1].StartTime)
                                     * Map.SliderVelocities[i - 1].Multiplier * 100);
                 PositionSeries.Points.Add(new DataPoint(Map.SliderVelocities[i].StartTime, position));
-                
-                // Displacement function = Position function - Base position function (constant 1x SV)
-                DisplacementSeries.Points.Add(new DataPoint(Map.SliderVelocities[i].StartTime, position - Map.SliderVelocities[i].StartTime * 100));
             }
             
             Model.Series.Add(SVSeries);
             Model.Series.Add(PositionSeries);
-            Model.Series.Add(DisplacementSeries);
         }
     }
 }
